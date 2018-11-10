@@ -1,0 +1,7 @@
+C:\Users\deamo\source\repos\MateoBigDickTest\MateoBigDickTest\obj\Debug\MateoBigDickTest.csprojAssemblyReference.cache
+C:\Users\deamo\source\repos\MateoBigDickTest\MateoBigDickTest\obj\Debug\MateoBigDickTest.csproj.CoreCompileInputs.cache
+C:\Users\deamo\source\repos\MateoBigDickTest\MateoBigDickTest\bin\Debug\MateoBigDickTest.exe.config
+C:\Users\deamo\source\repos\MateoBigDickTest\MateoBigDickTest\bin\Debug\MateoBigDickTest.exe
+C:\Users\deamo\source\repos\MateoBigDickTest\MateoBigDickTest\bin\Debug\MateoBigDickTest.pdb
+C:\Users\deamo\source\repos\MateoBigDickTest\MateoBigDickTest\obj\Debug\MateoBigDickTest.exe
+C:\Users\deamo\source\repos\MateoBigDickTest\MateoBigDickTest\obj\Debug\MateoBigDickTest.pdb

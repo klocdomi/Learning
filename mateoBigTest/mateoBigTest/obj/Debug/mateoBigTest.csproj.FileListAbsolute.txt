@@ -1,0 +1,7 @@
+C:\Users\deamo\source\repos\mateoBigTest\mateoBigTest\bin\Debug\mateoBigTest.exe.config
+C:\Users\deamo\source\repos\mateoBigTest\mateoBigTest\bin\Debug\mateoBigTest.exe
+C:\Users\deamo\source\repos\mateoBigTest\mateoBigTest\bin\Debug\mateoBigTest.pdb
+C:\Users\deamo\source\repos\mateoBigTest\mateoBigTest\obj\Debug\mateoBigTest.csprojAssemblyReference.cache
+C:\Users\deamo\source\repos\mateoBigTest\mateoBigTest\obj\Debug\mateoBigTest.csproj.CoreCompileInputs.cache
+C:\Users\deamo\source\repos\mateoBigTest\mateoBigTest\obj\Debug\mateoBigTest.exe
+C:\Users\deamo\source\repos\mateoBigTest\mateoBigTest\obj\Debug\mateoBigTest.pdb
