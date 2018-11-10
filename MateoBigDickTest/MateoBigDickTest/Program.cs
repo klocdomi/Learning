@@ -107,7 +107,7 @@ namespace MateoBigDickTest
                 }
             }
             
-            // Wyszukiwanie elementów po peselu 
+            // Wyszukiwanie elementu po peselu 
             void SearchByPesel(double pesel)
             {
                 Spis.found = false;
