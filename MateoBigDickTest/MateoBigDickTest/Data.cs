@@ -13,7 +13,8 @@ namespace MateoBigDickTest
         public string streetName { get; set; }
         public string streetNumber { get; set; }
         public double peselNumber { get; set; }
-        public static bool found = false; // zmienna do wyszukiwania po peselu 
+        
+        
 
 
 
@@ -21,6 +22,7 @@ namespace MateoBigDickTest
         {
             lastName = surname;
             peselNumber = pesel;
+        
         }
 
         public Data(string name,string surname, double pesel)
@@ -36,7 +38,7 @@ namespace MateoBigDickTest
             streetNumber = streetNum;
         }
 
-        public void Write()
+        public void Print()
         {
 
             Console.WriteLine($"First Name: {firstName}");
@@ -46,20 +48,13 @@ namespace MateoBigDickTest
             Console.WriteLine();
         }
 
-        public void Search(double pesel)
+        public bool SearchByPesel(double pesel)
         {
-            if (pesel == peselNumber)
+            if (pesel == this.peselNumber)
             {
-                Console.WriteLine();
-                Console.WriteLine($"First Name: {firstName}");
-                Console.WriteLine($"Last name: {lastName}");
-                Console.WriteLine($"Pesel number: {peselNumber}");
-                Console.WriteLine($"Adress: {streetName} {streetNumber}");
-                Console.WriteLine();
-                found = true;
-               
+                return true;
             }
-
+            else return false;
         }
 
 
