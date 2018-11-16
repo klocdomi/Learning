@@ -13,7 +13,6 @@ namespace MateoBigDickTest
         public string streetName { get; set; }
         public string streetNumber { get; set; }
         public double peselNumber { get; set; }
-        public static int index;
         public static bool found = false; // zmienna do wyszukiwania po peselu 
 
 
@@ -22,7 +21,6 @@ namespace MateoBigDickTest
         {
             lastName = surname;
             peselNumber = pesel;
-            index++;
         }
 
         public Data(string name,string surname, double pesel)
