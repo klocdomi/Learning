@@ -13,68 +13,23 @@ namespace MateoBigDickTest
         {
 
             Register newReg = new Register();
+            // adding few objects to list
+            newReg.Add(new Data("Domi", "Kloc", 1232112345, "Juliusza Lea", "234/1"));
+            newReg.Add(new Data("Mateo", "Lis", 1232132133));
+            newReg.Add(new Data("Wieczorek", 123232321));
+
+            // checking if pesel is unique before adding to list test
             newReg.Add(new Data("domi", 997));
-            newReg.Add(new Data("mati", 997));
+            newReg.Add(new Data("mati", 997)); 
+            newReg.Add(new Data("gwp", 123));
+            // deleting test
+            newReg.Delete(123);
+
+            // printing list
             newReg.PrintList();
 
             Console.ReadKey();
-            /*
-            List<Data> entryList = new List<Data>()
-            {
-                new Data ("Domi","Kloc",1232112345,"Juliusza Lea","234/1"),
-                new Data("Mateo", "Lis",1232132133),
-                new Data("Wieczorek",123232321)
-
-            };
-
-   
-            
-            // Wypisanie listy
-            void ShowList()
-            {
-                foreach (Data i in entryList)
-                {
-                    i.Print();
-                }
-            }
-
-            // Dodanie elemntu do listy
-            void AddToList(string surname, double pesel)
-            { 
-
-                SearchByPesel(pesel);
-
-                if (Data.found == false)
-                {
-                    entryList.Add(new Data(surname, pesel));
-                }
-
-            }
-
-            // Usunięcie elementu z listy
-            void DeleteFromList(double pesel)
-            {
-                foreach (Data i in entryList)
-                {
-                    if (pesel == i.peselNumber)
-                    {
-                        entryList.Remove(i);
-                        break;
-                    }
-                }
-            }
-            
-            // Wyszukiwanie elementu po peselu 
-            void SearchByPesel(double pesel)
-            {
-                Data.found = false;
-
-                foreach (Data i in entryList)
-                {
-                    i.SearchByPesel(pesel);
-                }
-
-            }*/
+      
 
         }
 
@@ -93,6 +48,15 @@ namespace MateoBigDickTest
 
         public List<Data> list = new List<Data> { };
 
+
+        public void PrintList()
+        {
+            foreach (Data i in list)
+            {
+                i.Print();
+            }
+        }
+
         public void Add(Data newData)
         {
             bool check = false;
@@ -103,24 +67,38 @@ namespace MateoBigDickTest
                     check = true;
                     break;
                 }
-
             }
-            Console.WriteLine(check);
+           
             if (check != true)
             {
                 list.Add(newData);
             }
 
-
         }
 
-        public void PrintList()
+        public void Delete(double pesel)
         {
+            bool check = false;
+            int index = 0;
             foreach(Data i in list)
             {
-                i.Print();
+                index++;
+
+                if(i.SearchByPesel(pesel) == true)
+                {
+                    check = true;
+                    break;
+                }
             }
+            if (check == true)
+            {
+                list.RemoveAt(index-1);
+            }
+
+
         }
+
+
 
 
 
