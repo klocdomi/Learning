@@ -13,7 +13,7 @@ namespace MateoBigDickTest
         {
 
             Register newReg = new Register();
-            // adding few objects to list
+            // adding some objects to list
             newReg.Add(new Data("Domi", "Kloc", 1232112345, "Juliusza Lea", "234/1"));
             newReg.Add(new Data("Mateo", "Lis", 1232132133));
             newReg.Add(new Data("Wieczorek", 123232321));
@@ -22,8 +22,12 @@ namespace MateoBigDickTest
             newReg.Add(new Data("domi", 997));
             newReg.Add(new Data("mati", 997)); 
             newReg.Add(new Data("gwp", 123));
+           
             // deleting test
             newReg.Delete(123);
+
+            // printing by pesel test
+            //newReg.PrintByPesel(1232112345);
 
             // printing list
             newReg.PrintList();
@@ -60,6 +64,7 @@ namespace MateoBigDickTest
         public void Add(Data newData)
         {
             bool check = false;
+
             foreach(Data i in list)
             {   
                 if(true == i.SearchByPesel(newData.peselNumber))
@@ -80,6 +85,7 @@ namespace MateoBigDickTest
         {
             bool check = false;
             int index = 0;
+
             foreach(Data i in list)
             {
                 index++;
@@ -90,14 +96,26 @@ namespace MateoBigDickTest
                     break;
                 }
             }
+
             if (check == true)
             {
                 list.RemoveAt(index-1);
             }
 
-
         }
 
+        public void PrintByPesel(double pesel)
+        {
+            foreach (Data i in list)
+            {
+                if (i.SearchByPesel(pesel) == true)
+                {
+                    i.Print();
+                    break;
+                }
+            }
+
+        }
 
 
 
