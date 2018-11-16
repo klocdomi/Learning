@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MateoBigDickTest
 {
-    class Spis
+    class Data
     {
         public string firstName { get; set;}
         public string lastName { get; set; }
@@ -18,27 +18,27 @@ namespace MateoBigDickTest
 
 
 
-        public Spis (string surname, double pesel)
+        public Data (string surname, double pesel)
         {
             lastName = surname;
             peselNumber = pesel;
             index++;
         }
 
-        public Spis(string name,string surname, double pesel)
+        public Data(string name,string surname, double pesel)
             :this(surname,pesel)
         {
             firstName = name;
         }
 
-        public Spis(string name,string surname, double pesel, string street, string streetNum)
+        public Data(string name,string surname, double pesel, string street, string streetNum)
             :this(name,surname,pesel)
         {
             streetName = street;
             streetNumber = streetNum;
         }
 
-        public void Wypisz()
+        public void Write()
         {
 
             Console.WriteLine($"First Name: {firstName}");
@@ -48,7 +48,7 @@ namespace MateoBigDickTest
             Console.WriteLine();
         }
 
-        public void SzukajPoPesel(double pesel)
+        public void Search(double pesel)
         {
             if (pesel == peselNumber)
             {

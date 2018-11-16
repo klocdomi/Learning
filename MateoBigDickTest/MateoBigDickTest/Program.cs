@@ -11,17 +11,13 @@ namespace MateoBigDickTest
     {
         static void Main(string[] args)
         {
-            // zmienne do menu 
-            string naz;
-            string pes;
-            string option;
 
             // lista
-            List<Spis> entryList = new List<Spis>()
+            List<Data> entryList = new List<Data>()
             {
-                new Spis ("Domi","Kloc",1232112345,"Juliusza Lea","234/1"),
-                new Spis("Mateo", "Lis",1232132133),
-                new Spis("Wieczorek",123232321)
+                new Data ("Domi","Kloc",1232112345,"Juliusza Lea","234/1"),
+                new Data("Mateo", "Lis",1232132133),
+                new Data("Wieczorek",123232321)
 
             };
 
@@ -30,9 +26,9 @@ namespace MateoBigDickTest
             // Wypisanie listy
             void ShowList()
             {
-                foreach (Spis i in entryList)
+                foreach (Data i in entryList)
                 {
-                    i.Wypisz();
+                    i.Write();
                 }
             }
 
@@ -42,9 +38,9 @@ namespace MateoBigDickTest
 
                 SearchByPesel(pesel);
 
-                if (Spis.found == false)
+                if (Data.found == false)
                 {
-                    entryList.Add(new Spis(surname, pesel));
+                    entryList.Add(new Data(surname, pesel));
                 }
 
             }
@@ -52,7 +48,7 @@ namespace MateoBigDickTest
             // Usunięcie elementu z listy
             void DeleteFromList(double pesel)
             {
-                foreach (Spis i in entryList)
+                foreach (Data i in entryList)
                 {
                     if (pesel == i.peselNumber)
                     {
@@ -65,11 +61,11 @@ namespace MateoBigDickTest
             // Wyszukiwanie elementu po peselu 
             void SearchByPesel(double pesel)
             {
-                Spis.found = false;
+                Data.found = false;
 
-                foreach (Spis i in entryList)
+                foreach (Data i in entryList)
                 {
-                    i.SzukajPoPesel(pesel);
+                    i.Search(pesel);
                 }
 
             }
