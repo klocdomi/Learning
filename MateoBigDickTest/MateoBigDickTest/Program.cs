@@ -25,52 +25,7 @@ namespace MateoBigDickTest
 
             };
 
-            // nieskończona pętla z menu
-            do
-            {
-                Console.WriteLine(@"
-1) Wypisz liste
-2) Dodaj do listy
-3) Usuń z listy
-4) Szukaj po numerze pesel");
-                Console.WriteLine();
-                Console.WriteLine("Wybierz opcje: ");
-                option = Console.ReadLine();
-
-
-                switch (option)
-                {
-                    case "1":
-                        ShowList();
-                        break;
-                    case "2":
-                        Console.WriteLine("Wprowadź nazwisko:");
-                        naz = Console.ReadLine();
-                        
-                        Console.WriteLine("Wprowadź numer pesel:");
-                        pes = Console.ReadLine();
-                        
-                        AddToList(naz,double.Parse(pes));
-                        break;
-                    case "3":
-                        Console.WriteLine("Wprowadź pesel:");
-                        pes = Console.ReadLine();
-                        DeleteFromList(double.Parse(pes));
-                        break;
-                    case "4":
-                        Console.WriteLine("Wprowadź numer pesel:");
-                        pes = Console.ReadLine();
-                        SearchByPesel(double.Parse(pes));
-                        
-                        break;
-                    default:
-                        Console.WriteLine("Zły wybór..");
-                        break;
-
-                }
-            }
-            while (true);
-
+   
             
             // Wypisanie listy
             void ShowList()
