@@ -11,7 +11,13 @@ namespace MateoBigDickTest
     {
         static void Main(string[] args)
         {
+            Register ExampleRegister = new Register();
 
+            ExampleRegister.Add(new Data("Kloc", 1232132131));
+
+            ExampleRegister.Show();
+
+            Console.ReadKey();
 
 
         }
@@ -23,11 +29,30 @@ namespace MateoBigDickTest
     class Register
     {
         private int index = 0;
+        public List<Data> basicList = new List<Data>()
+            {
+                new Data ("Domi","Kloc",1232112345,"Juliusza Lea","234/1"),
+                new Data("Mateo", "Lis",1232132133),
+                new Data("Wieczorek",123232321)
 
+            };
 
         public Register()
         {
+            index++;
+        }
 
+        public void Show()
+        {
+            foreach (Data i in basicList)
+            {
+                i.Write();
+            }
+        }
+
+        public void Add(Data newObject)
+        {
+            basicList.Add(newObject);
         }
 
 
@@ -40,14 +65,6 @@ namespace MateoBigDickTest
 
             };
 
-        // Wypisanie listy
-        void ShowList()
-        {
-            foreach (Data i in entryList)
-            {
-                i.Write();
-            }
-        }
 
         // Dodanie elemntu do listy
         void AddToList(string surname, double pesel)
