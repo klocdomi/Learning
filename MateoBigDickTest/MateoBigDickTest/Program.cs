@@ -12,7 +12,10 @@ namespace MateoBigDickTest
         static void Main(string[] args)
         {
 
-            Register newReg = new Register();
+            Register newReg = Register.GetInstance();
+
+
+
             // adding some objects to list
             newReg.Add(new PersonData.Builder()
                 .FirstName("Domi")
@@ -61,10 +64,10 @@ namespace MateoBigDickTest
             //newReg.Delete(1);
 
             // printing by pesel test
-            newReg.PrintByPesel(123456789);
+            //newReg.PrintByPesel(123456789);
 
             // printing list
-            //newReg.PrintList();
+            newReg.PrintList();
 
             Console.ReadKey();
       

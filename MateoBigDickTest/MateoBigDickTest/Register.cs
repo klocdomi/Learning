@@ -8,10 +8,13 @@ namespace MateoBigDickTest
 {
     class Register
     {
+        private static Register instance = new Register(); // Singleton design pattern
 
-        public Register()
+        public static Register GetInstance()
         {
+            return instance;
         }
+
 
         public List<PersonData> list = new List<PersonData> { };
 

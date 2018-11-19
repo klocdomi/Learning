@@ -23,7 +23,7 @@ namespace MateoBigDickTest
             PeselNumber = builder.pesel;
         }
 
-        public class Builder
+        public class Builder // Builder design pattern
         {
             public string firstname;
             public string lastname;
