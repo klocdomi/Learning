@@ -14,23 +14,57 @@ namespace MateoBigDickTest
 
             Register newReg = new Register();
             // adding some objects to list
-            newReg.Add(new Data("Domi", "Kloc", 1232112345, "Juliusza Lea", "234/1"));
-            newReg.Add(new Data("Mateo", "Lis", 1232132133));
-            newReg.Add(new Data("Wieczorek", 123232321));
+            newReg.Add(new PersonData.Builder()
+                .FirstName("Domi")
+                .LastName("Kloc")
+                .StreetName("Juliusza Lea")
+                .StreetNumber("234/1")
+                .PeselNumber(123456789)
+                .build());
+
+
+            newReg.Add(new PersonData.Builder()
+                .FirstName("Mateo")
+                .LastName("Lis")
+                .PeselNumber(12345)
+                .build());
+
+            newReg.Add(new PersonData.Builder()
+                .LastName("Wieczorek")
+                .PeselNumber(123112)
+                .build());
+
+
 
             // checking if pesel is unique before adding to list test
-            newReg.Add(new Data("domi", 997));
-            newReg.Add(new Data("mati", 997)); 
-            newReg.Add(new Data("gwp", 123));
+            newReg.Add(new PersonData.Builder()
+                .FirstName("domi")
+                .PeselNumber(997)
+                .build());
+
+            newReg.Add(new PersonData.Builder()
+                .FirstName("mati")
+                .PeselNumber(997)
+                .build());
+
+            newReg.Add(new PersonData.Builder()
+                .FirstName("tommi")
+                .PeselNumber(123)
+                .build());
+       
+         
+            
            
             // deleting test
             newReg.Delete(123);
+            //newReg.Delete(997);
+            //newReg.Delete(1);
 
             // printing by pesel test
-            //newReg.PrintByPesel(1232112345);
+            newReg.PrintByPesel(123456789);
 
             // printing list
-            newReg.PrintList();
+            //newReg.PrintList();
 
             Console.ReadKey();
       
@@ -41,86 +75,7 @@ namespace MateoBigDickTest
 
     }
 
-    class Register
-    {
-        private int index = 0;
-
-        public Register()
-        {
-            index++;
-        }
-
-        public List<Data> list = new List<Data> { };
-
-
-        public void PrintList()
-        {
-            foreach (Data i in list)
-            {
-                i.Print();
-            }
-        }
-
-        public void Add(Data newData)
-        {
-            bool check = false;
-
-            foreach(Data i in list)
-            {   
-                if(true == i.SearchByPesel(newData.peselNumber))
-                {
-                    check = true;
-                    break;
-                }
-            }
-           
-            if (check != true)
-            {
-                list.Add(newData);
-            }
-
-        }
-
-        public void Delete(double pesel)
-        {
-            bool check = false;
-            int index = 0;
-
-            foreach(Data i in list)
-            {
-                index++;
-
-                if(i.SearchByPesel(pesel) == true)
-                {
-                    check = true;
-                    break;
-                }
-            }
-
-            if (check == true)
-            {
-                list.RemoveAt(index-1);
-            }
-
-        }
-
-        public void PrintByPesel(double pesel)
-        {
-            foreach (Data i in list)
-            {
-                if (i.SearchByPesel(pesel) == true)
-                {
-                    i.Print();
-                    break;
-                }
-            }
-
-        }
-
-
-
-
-    }
+    
 
 
 
