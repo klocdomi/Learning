@@ -15,6 +15,12 @@ namespace MateoBigDickTest
             return instance;
         }
 
+        private Register()
+        {
+
+        }
+
+
 
         public List<PersonData> list = new List<PersonData> { };
 

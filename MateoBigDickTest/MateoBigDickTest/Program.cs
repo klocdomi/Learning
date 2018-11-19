@@ -14,7 +14,7 @@ namespace MateoBigDickTest
 
             Register newReg = Register.GetInstance();
 
-
+            //Register newReg2 = new Register();
 
             // adding some objects to list
             newReg.Add(new PersonData.Builder()
