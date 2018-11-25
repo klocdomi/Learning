@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MateoBigDickTest
 {
-    class Register : PersonData
+    class Register
     {
         private static Register instance = new Register(); // Singleton design pattern
 

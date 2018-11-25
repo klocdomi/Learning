@@ -37,6 +37,10 @@ namespace MateoBigDickTest
                 .WithPeselNumber(123112)
                 .Build());
 
+            // throws exception - pesel cannot be undefined
+           // newReg.AddToList(new PersonData.Builder()
+               // .WithPeselNumber(23.323)
+               // .Build());
 
 
             // checking if pesel is unique before adding to list test

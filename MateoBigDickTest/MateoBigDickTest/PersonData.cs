@@ -12,7 +12,18 @@ namespace MateoBigDickTest
         private string LastName { get; set; }
         private string StreetName { get; set; }
         private string StreetNumber { get; set; }
-        public double PeselNumber { get; set; }
+        private double _PeselNumber;
+        public double PeselNumber
+        {
+            get { return _PeselNumber; }
+            set
+            {
+                if ((value > 0) && ((value % 1) == 0)) _PeselNumber = value;
+                else
+                { throw new Exception("Wrong value of pesel number!"); }
+            }
+                
+        }
 
         public void PrintElementProperties()
         {
@@ -24,26 +35,22 @@ namespace MateoBigDickTest
             Console.WriteLine();
         }
 
-        protected PersonData()
-        {
-
-        }
-
-
 
         private PersonData(Builder builder)
         {
+            
             FirstName = builder.firstname;
             LastName = builder.lastname;
             StreetName = builder.streetname;
             StreetNumber = builder.streetnumber;
             PeselNumber = builder.pesel;
+            
         }
 
+        static Builder builder;
 
 
-
-        public  class Builder : PersonData // Builder design pattern
+        public  class Builder  // Builder design pattern
         {
             public string firstname;
             public string lastname;
@@ -51,7 +58,7 @@ namespace MateoBigDickTest
             public string streetnumber;
             public double pesel;
 
-            private PersonData person;
+            
 
             public Builder WithFirstName(string firstname)
             {
