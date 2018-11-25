@@ -17,49 +17,47 @@ namespace MateoBigDickTest
             //Register newReg2 = new Register();
 
             // adding some objects to list
-            newReg.Add(new PersonData.Builder()
-                .FirstName("Domi")
-                .LastName("Kloc")
-                .StreetName("Juliusza Lea")
-                .StreetNumber("234/1")
-                .PeselNumber(123456789)
-                .build());
+            newReg.AddToList(new PersonData.Builder()
+                .WithFirstName("Domi")
+                .WithLastName("Kloc")
+                .WithStreetName("Juliusza Lea")
+                .WithStreetNumber("234/1")
+                .WithPeselNumber(123456789)
+                .Build());
 
 
-            newReg.Add(new PersonData.Builder()
-                .FirstName("Mateo")
-                .LastName("Lis")
-                .PeselNumber(12345)
-                .build());
+            newReg.AddToList(new PersonData.Builder()
+                .WithFirstName("Mateo")
+                .WithLastName("Lis")
+                .WithPeselNumber(12345)
+                .Build());
 
-            newReg.Add(new PersonData.Builder()
-                .LastName("Wieczorek")
-                .PeselNumber(123112)
-                .build());
+            newReg.AddToList(new PersonData.Builder()
+                .WithLastName("Wieczorek")
+                .WithPeselNumber(123112)
+                .Build());
 
 
 
             // checking if pesel is unique before adding to list test
-            newReg.Add(new PersonData.Builder()
-                .FirstName("domi")
-                .PeselNumber(997)
-                .build());
+            newReg.AddToList(new PersonData.Builder()
+                .WithFirstName("domi")
+                .WithPeselNumber(997)
+                .Build());
 
-            newReg.Add(new PersonData.Builder()
-                .FirstName("mati")
-                .PeselNumber(997)
-                .build());
+            newReg.AddToList(new PersonData.Builder()
+                .WithFirstName("mati")
+                .WithPeselNumber(997)
+                .Build());
 
-            newReg.Add(new PersonData.Builder()
-                .FirstName("tommi")
-                .PeselNumber(123)
-                .build());
-       
-         
-            
+            newReg.AddToList(new PersonData.Builder()
+                .WithFirstName("tommi")
+                .WithPeselNumber(123)
+                .Build());
+
            
             // deleting test
-            newReg.Delete(123);
+            newReg.DeleteFromList(123);
             //newReg.Delete(997);
             //newReg.Delete(1);
 

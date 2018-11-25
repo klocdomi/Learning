@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MateoBigDickTest
 {
-    class Register
+    class Register : PersonData
     {
         private static Register instance = new Register(); // Singleton design pattern
 
@@ -15,58 +15,21 @@ namespace MateoBigDickTest
             return instance;
         }
 
-        private Register()
-        {
-
-        }
 
 
+        private List<PersonData> list = new List<PersonData> { };
 
-        public List<PersonData> list = new List<PersonData> { };
-
-
-        public bool IsElementInTheCollection(PersonData param)
-        {
-            foreach (PersonData i in list)
-            {
-                if (i.SearchByPesel(param.PeselNumber))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-          
-        }
-
-        public int IndexOfElementInTheCollection(double pesel)
-        {
-            int index = -1;
-
-            foreach (PersonData i in list)
-            {
-                index++;
-
-                if (i.SearchByPesel(pesel))
-                {
-                    return index;
-                }
-            }
-
-            return -1; // element doesnt exist 
-        }
 
         public void PrintList()
         {
             foreach (PersonData i in list)
             {
-                i.Print();
+                i.PrintElementProperties();
             }
         }
 
-        public void Add(PersonData newData)
+        public void AddToList(PersonData newData)
         {
-
             if (!IsElementInTheCollection(newData)) // checks if there is already the result with same pesel number
             {
                 list.Add(newData);
@@ -74,30 +37,42 @@ namespace MateoBigDickTest
 
         }
 
-        public void Delete(double pesel)
+        public void DeleteFromList(double pesel)
         {
-            if (IndexOfElementInTheCollection(pesel) >= 0) // checks if element's index exist
+            if (GetIndexOfElementInTheCollection(pesel) >= 0) // checks if element's index exist
             {
-                list.RemoveAt(IndexOfElementInTheCollection(pesel));
+                list.RemoveAt(GetIndexOfElementInTheCollection(pesel));
             }
 
         }
 
         public void PrintByPesel(double pesel)
         {
-            foreach (PersonData i in list)
-            {
-                if (i.SearchByPesel(pesel))
-                {
-                    i.Print();
-                    break;
-                }
-            }
+
+            Predicate<PersonData> personFinder = (PersonData person) => { return person.PeselNumber.Equals(pesel); };
+
+            list.Find(personFinder).PrintElementProperties();
+            
+        }
+        
+
+        private bool IsElementInTheCollection(PersonData searchedData)
+        {
+
+            Predicate<PersonData> personExists = (PersonData person) => { return person.Equals(searchedData); };
+
+            return list.Exists(personExists);
 
         }
 
+        private int GetIndexOfElementInTheCollection(double searchedPesel)
+        {
 
+            Predicate<PersonData> indexFinder = (PersonData person) => { return person.PeselNumber.Equals(searchedPesel); };
 
+            return list.FindIndex(indexFinder);
+
+        }
 
     }
 }
