@@ -16,7 +16,6 @@ namespace MateoBigDickTest
         }
 
 
-
         private List<PersonData> list = new List<PersonData> { };
 
 
@@ -37,16 +36,16 @@ namespace MateoBigDickTest
 
         }
 
-        public void DeleteFromList(double pesel)
+        public void DeleteFromList(string pesel)
         {
-            if (GetIndexOfElementInTheCollection(pesel) >= 0) // checks if element's index exist
+            if (GetIndexOfElementInTheCollection(Convert.ToInt32(pesel)) >= 0) // checks if element's index exist
             {
-                list.RemoveAt(GetIndexOfElementInTheCollection(pesel));
+                list.RemoveAt(GetIndexOfElementInTheCollection(Convert.ToInt32(pesel)));
             }
 
         }
 
-        public void PrintByPesel(double pesel)
+        public void PrintByPesel(string pesel)
         {
 
             Predicate<PersonData> personFinder = (PersonData person) => { return person.PeselNumber.Equals(pesel); };

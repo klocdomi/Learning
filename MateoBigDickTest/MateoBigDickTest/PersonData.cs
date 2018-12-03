@@ -12,17 +12,17 @@ namespace MateoBigDickTest
         private string LastName { get; set; }
         private string StreetName { get; set; }
         private string StreetNumber { get; set; }
-        private double _PeselNumber;
-        public double PeselNumber
+        private string _PeselNumber;
+        public string PeselNumber
         {
-            get { return _PeselNumber; }
+            get
+            {
+                return _PeselNumber;
+            }
             set
             {
-                if ((value > 0) && ((value % 1) == 0)) _PeselNumber = value;
-                else
-                { throw new Exception("Wrong value of pesel number!"); }
+                 _PeselNumber = value;
             }
-                
         }
 
         public void PrintElementProperties()
@@ -47,28 +47,31 @@ namespace MateoBigDickTest
             
         }
 
-        static Builder builder;
+        public static Builder Metoda(string surname, string pesel)
+        {
+            Builder newInstance = new Builder(surname, pesel);
 
+            return newInstance;
+            
+        }
 
-        public  class Builder  // Builder design pattern
+        public class Builder  // Builder design pattern
         {
             public string firstname;
             public string lastname;
             public string streetname;
             public string streetnumber;
-            public double pesel;
+            public string pesel;
 
+            public Builder(string lastname, string pesel)
+            {
+                this.lastname = lastname;
+                this.pesel = pesel;
+            }
             
-
             public Builder WithFirstName(string firstname)
             {
                 this.firstname = firstname;
-                return this;
-            }
-
-            public Builder WithLastName(string lastname)
-            {
-                this.lastname = lastname;
                 return this;
             }
 
@@ -81,12 +84,6 @@ namespace MateoBigDickTest
             public Builder WithStreetNumber(string streetnumber)
             {
                 this.streetnumber = streetnumber;
-                return this;
-            }
-
-            public Builder WithPeselNumber(double pesel)
-            {
-                this.pesel = pesel;
                 return this;
             }
 
