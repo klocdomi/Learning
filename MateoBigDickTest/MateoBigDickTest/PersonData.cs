@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MateoBigDickTest
 {
-    class PersonData
+    class PersonData 
     {
         private string FirstName { get; set;}
         private string LastName { get; set; }
@@ -47,15 +47,9 @@ namespace MateoBigDickTest
             
         }
 
-        public static Builder Metoda(string surname, string pesel)
-        {
-            Builder newInstance = new Builder(surname, pesel);
 
-            return newInstance;
-            
-        }
 
-        public class Builder  // Builder design pattern
+        public class Builder // Builder design pattern
         {
             public string firstname;
             public string lastname;
@@ -63,7 +57,15 @@ namespace MateoBigDickTest
             public string streetnumber;
             public string pesel;
 
-            public Builder(string lastname, string pesel)
+            public static Builder CreateInstance(string surname, string pesel)
+            {
+                Builder newInstance = new Builder(surname, pesel);
+
+                return newInstance;
+
+            }
+
+            private Builder(string lastname, string pesel)
             {
                 this.lastname = lastname;
                 this.pesel = pesel;
