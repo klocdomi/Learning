@@ -1,0 +1,145 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp5
+{
+    class Program
+    {
+        public enum ReservationTime
+        {
+            Booked
+        };
+
+        static void Main(string[] args)
+        {
+            D d = new F();
+            d.Virtual();
+            d.Normal();
+
+
+            var maleIds = new HashSet<int> { 2, 4, 2, 5 };
+            var femaleIds = new HashSet<int> { 3, 4 };
+
+            foreach (var item in femaleIds.Union(maleIds))
+            {
+                Console.WriteLine(item);
+            }
+
+            object shape = new Rectangle { Height = 10, Length = 10 };
+            switch (shape)
+            {
+                case Circle c:
+                    Console.WriteLine($"circle with radius{c.Radius}");
+                    break;
+                case Rectangle s when (s.Length == s.Height):
+                    Console.WriteLine($"{s.Length} x {s.Height} square");
+                    break;
+                case Rectangle r:
+                    Console.WriteLine($"{r.Length} x {r.Height} rectangle");
+                    break;
+                default:
+                    Console.WriteLine("unknown");
+                    break;
+                case null:
+                    throw new ArgumentNullException(nameof(shape));
+
+
+
+                    var person = new Person2();
+                    var addressLine1 = person?.Address.Lines[0];
+
+
+
+                    Console.WriteLine(person.func(null));
+
+
+
+            }
+
+
+
+         }
+
+
+    }
+
+    public class A
+    {
+        public void Normal() { Console.WriteLine("A Normal()"); }
+        public virtual void Virtual()
+        {
+            Console.WriteLine("A Virtual");
+            Virtual2();
+        }
+        public virtual void Virtual2() { Console.WriteLine("A Virtual2()"); }
+    }
+
+    public class B : A
+    {
+        public void Normal() { Console.WriteLine("B Normal()"); }
+        public virtual void Virtual() {  Console.WriteLine("B Virtual");}
+        public override void Virtual2() { Console.WriteLine("B Virtual2()"); }
+    }
+    public class C : B
+    {
+
+        public override void Virtual() { Console.WriteLine("C Virtual()"); }
+    }
+    public class D : C 
+    {
+        public void Normal() { Console.WriteLine("D Normal()"); }
+        public override void Virtual() { Console.WriteLine("D Virtual"); }
+        public override void Virtual2() { Console.WriteLine("D Virtual2()"); }
+    }
+    public abstract class E : D 
+    {
+       
+        public virtual void Virtual() { Console.WriteLine("D Virtual"); }
+        public abstract void Virtual2();
+    }
+    public class F : E
+    {
+
+        public override void Virtual() { Console.WriteLine("F Virtual"); }
+        public override void Virtual2() { Console.WriteLine("F Virtual2()"); }
+    }
+
+    public abstract class Shape { }
+
+    public class Circle : Shape
+    {
+        public double Radius { get; set; }
+        
+    }
+
+    public class Rectangle : Shape
+    {
+        public int Length { get; set; }
+        public int Height { get; set; }
+    }
+
+    class Person2
+    {
+        public Address Address { get; set; }
+
+        public int func(int? countValue)
+        {
+
+            countValue = 10;
+            return (int) countValue;
+        }
+
+    }
+
+    public class Address
+    {
+        public IList<string> Lines { get; set; }
+    }
+
+
+
+
+}
