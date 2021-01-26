@@ -176,5 +176,53 @@ function foo() {
 foo(); // 5 7 9 
 
 
+var foo = function() { } - anonymous function
+var foo = function bar() { } - named function
+
+IIFE - immediately invoked function expression
+
+(function IIFE() {
+    console.log("yo");
+})();
+
+outer brackets prevents treating it like a normal function, last brackets - executes function
+
+Closure - ability to continue and access a function's scope(variables) even once the function has finished running
+
+function makeAdder(x){
+    function add(y){
+        return y + x;
+    };
+
+    return add;
+};
+
+var plusOne = makeAdder(1);
+var plusTen = makeAdder(10);
+
+plusOne(3); // 4 = 1 + 3
+plusOne(41); // 42 = 1 + 41
+plusTen(13); // 23 = 10 + 13
+
+closures are commonly used in module pattern
+
+this Identifier - does not refer to the function itself, points to an object. Which object it points to depands on how the function was called.
+
+Prototypes - fallback if the property is missing - trying to fake class mechanism with inheritance?
+
+var foo = {
+    a: 42;
+};
+
+var bar = Object.Create(foo);
+bar.b = "yo yo";
+
+bar.b; // "yo yo"
+bar.a; // 42 - delegated to foo
+
+
+polyfilling - taking definition of the newer feature and producing a piece of code that's equivalent to the behavior but its able to run in older JS environemnts
+
+transpiling - using a tool to convert newer code into older equivalent. transforming + compiling. Cannot polyfill new syntax
 
 */
