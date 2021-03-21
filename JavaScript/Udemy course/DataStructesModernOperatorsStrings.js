@@ -94,12 +94,258 @@ const {
 console.log(open,close); //  10    24
 
 
+// 3. The Spread Operator '...'
 
 
+Similar to destructuring  ( it helps to get out elements from arrarys ) but spread operator always takes ALL the elements from array.
+Actually works not only on arrays but also on all iterables : arrays, strings, maps, sets.. but NOT OBJECTS!
+
+Use cases:
+1. Passing multiple elements into functions 
+2. Expending arrays with new elements
+
+Shallow copy:
+
+const copy = [...arr];
+
+Expending elements in arrays:
+
+constr arr = [7, 8, 9];
+const badNewArr = [1, 2 , arr[0], arr[1], arr[2]];    ===============>     const newArr = [1, 2, ...arr];
+console.log(badNewArr); // [1 2 7 8 9]                                     console.log(newArr); // [1 2 7 8 9]
+
+Also useful in passing multiple elements in functions as arguments:
+
+console.log(arr[0], arr[1], arr[2]);  =================>   console.log(...arr); // 7 8 9 
+
+Joining 2 arrays or more:
+
+const joinArr = [...arr, ...newArr];
+
+Cannot be used in building strings in template literals:
+
+const str = "domi";
+
+console.log(\`\${...str}\`); // unexpected token: ...
+
+Building new objects:
+
+const restaurant = {
+  name: "domi pizza",
+  categories: ["pizza", "pasta", "italian"]
+};
+
+const newResturant = [fundedIn: 1999, ...resturant, founder: 'Marco Polo'];
+
+const restuarantCopy = {...restaurant };
+restaurantCopy.name = "2137 pizza delivery";
+console.log(restaurant.name); // "domi pizza";
+console.log(restaurantCopy.name); // "2137 pizza delivery";
 
 
+// 4. Rest Pattern and Parameters
+
+Rest pattern - looks like spread operator (same syntax '...') but does exactly opposite than spread operator. 
+Takes multiple elements and condese them into an array (pack elements into array).
+
+SPREAD, because onm RIGHT side of =
+const arr = [1, 2, ...[3,4]];
+
+REST, becuase on LEFT side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others); // 1 2 [3, 4, 5]
+
+Objects:
+
+const openingHours = {
+  thursday: {
+    open: 12,
+    close: 22
+  },
+  friday: {
+    open: 10,
+    close: 24
+  },
+  saturday: {
+    open: 8,
+    close: 22
+  }
+};
+
+const {saturday, ...weekdays} = openingHours;
+console.log(weekdays); // {friday: {..}, thursday: {..}}
+
+Functions:
+
+const add = function (...numbers){
+  let sum = 0;
+  for(let i =0; i<numbers.length; i++)
+  sum +=numbers[i];
+};
+
+add(2,3);
+add(8,3,4,67,88);
+
+const args = [23,5,6];
+add(...args); // REST Parameters
+
+
+// 5. Short Circuting && and ||
+
+Logical operators:
+- use any data type,
+- return any data type,
+- short circuting - short circut evaluation
+
+For || it takes first truthy and returns its value or the last value if all falsy:
+
+console.log(3 || "domi"); // 3  (not true!)
+console.log('' || "domi")// "domi" ( '' - falsy value ) 
+console.log(true || 0); // true 
+console.log(undefined || null); // null
+console.log(undefined || 0 || '' || null || "yo");  //   "yo"
+console.log(undefined || 0 || '' || null); // null !!!
+
+For && it takes first falsy and returns its value or the last value if all truthy:
+
+console.log(3 && "domi"); // "domi"
+console.log('' && "domi")// '' ( '' - falsy value ) 
+console.log(true && 0); // 0
+console.log(undefined && null); // undefined
+console.log('yrdy' && 1 && 323 && null && "yo");  //   'null'
+console.log('yrdy' && 1 && 323 && "yo"); // "yo" !!!
+
+
+// 6. Nullish Coalescing Operator (??)
+
+const numGuests = 0;  // falsy value
+const guests = numGuests || 10;
+console.log(guests); // 10 because 0 is falsy 
+
+const guestsCorrect = numGuests ?? 10;
+console.log(guestsCorrect); // 0 because it checks only for null and undefined, not truthy like ||
+
+
+// 7. For-of loop
+
+New way of looping of the arrays (similar to foreach in C#). It's possible to use 'continue' or 'break' inside the for-of loops. 
+
+
+const arr = [7, 8, 9];
+for (const item of arr) console.log(item); //  7 8 9
+
+It's also possible to get index of element!! :
+
+for (const item of arr.entries()) {
+  console.log(\`index: \${item[0]}, value: \${item[1]}\`);         /// index: 0, value: 7 etc.  
+}
+
+item => [index, value]
+
+console.log([...arr.entries()]);
+
+for(let [index, value] of arr.entries()) {
+  console.log(\`\${index} => \${value}\`);
+}
+
+
+// 8. Enhanced Object Literals
+
+1st enhancement - shorter variable declarations in objects:
+const obj = {
+  test: 1,
+  name: 'ty'
+}
+
+Before ES6:                                   In ES6:
+
+const example = {           ================>  const example = {
+  obj = obj                                       obj             // no need to specify, will take from parent scope
+}                                              }
+
+console.log(example.obj); // {test: 1, name: 'ty'}
+
+2nd enhancement - shorter functions property declarations in objects:
+
+Before ES6:                                   In ES6:
+
+const example = {           ================>  const example = {
+  order: function(test){                        order(test) {
+  return 'pizza';                                 return 'pizza';
+  }                                             }
+}                                              }
+
+3rd enhancement:
+
+const wedays = ['mon','tue', 'wed', 'thu', 'fri'];
+
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close, 22,
+  },
+  [\`day-\${2+4}\`]: {
+    open: 0,
+    close: 12 + 12,
+  }
+}
 
 
 
 -----------------------------------------------------------------------------------------
 ` + "</code></pre>";
+
+
+//Practice:
+
+const game = {
+  team1: "Bayern Munich",
+  team2: "PSG",
+  players: [
+    ['Neuer', 'Sule', 'Pavard', 'Boateng', 'Davies', 'Kimmich', 'Muller', 'Goretzka', 'Gnarby', 'Sane', 'Robercik'],
+    ['Navas', 'Kimpembe', 'Kehrer', 'Bernat', 'Kurzawa', 'Verratti', 'Di Maria', 'Rafinha', 'Icardi', 'Neymar', 'Mbappe']
+  ],
+  score: '4:0',
+  scored: ['Robercik', 'Gnarby', 'Robercik', 'Mbappe', 'Kimmich', 'Robercik'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+  printGoals: function(...players) {
+    console.log(players);
+    let goalsCount = 0;
+    let scorers = [];
+    for(let i=0; i < this.scored.length; i++) {
+      players.find(x => this.scored[i] == x) && (goalsCount++ & scorers.push(this.scored[i]));
+    }
+    console.log(`${goalsCount} goals were scored by ${scorers}`);
+
+  }
+};
+
+const [players1, players2] = game.players;
+
+const [gk, ...fieldPlayers] = players1;
+
+console.log(gk, fieldPlayers);
+
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+
+const playerFinals = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
+console.log(playerFinals);
+
+const {odds: {team1, x:draw, team2 }} = game;
+console.log(team1, draw, team2);
+
+game.printGoals('Davies', 'Mbappe', 'Robercik', 'Kimmich');
+
+team1 < team2 && console.log('Team 1 is more likely to win');
+
+team1 > team2 && console.log('Team 2 is more likely to win');
