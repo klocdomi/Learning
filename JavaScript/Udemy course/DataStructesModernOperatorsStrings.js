@@ -295,6 +295,107 @@ const openingHours = {
 }
 
 
+// 9. Optional chaining '?.'
+
+similar to c# feature but if value doesn't exist it returns undefined.                                                  
+
+
+Methods:
+
+restaurant.order?.(0, 1) - will be called only if exists otherwise returns undefined
+
+Arrays:
+
+const users = [
+  {
+    name: 'domi', email: 'blabla@gass.pl'
+  }
+]
+console.log(users[0]?.name ?? 'User array empty');
+
+
+// 10. Looping Objects: Object Keys, values, entries
+
+Property names (keys):
+
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close, 22,
+  },
+  [\`day-\${2+4}\`]: {
+    open: 0,
+    close: 12 + 12,
+  }
+}
+
+for (const day of Object.keys(openingHours)) {
+  const.log(day); // thu fri sat
+}
+
+Property values:
+const values = Object.values(openingHours);
+console.log(values); // [ {open: 12, close 12}, {...}, {open: 0, close: 24} ]
+
+Entire object:
+
+const entries = Object.entries(openingHours);   // Creates key value pairs in array
+
+
+// 11. Sets
+
+New ES6 data structure. Collection of unique values! Order of elements is irrelevant (no indexes). Iterable is passed in constructor.
+
+const orders = ['pasta', 'pizza', 'pizza', 'risoto', 'pasta', 'pizza'];
+const ordersSet = new Set(orders);
+
+console.log(ordersSet); // {'pasta', 'pizza', 'risoto'} - no duplicates
+
+ordersSet.size // 3 - not length
+ordersSet.has('pizza'); // true
+ordersSet.add('lasagne');
+ordersSet.delete('risoto');
+ordersSet.clear();
+
+Unique values:
+
+const ordersUnique = [...new Set(orders)];
+const charsUnique = new Set('dominik').size; 
+
+
+// 12. Maps
+
+New ES6 data stracture. Key-value pair collection. Like dictionary in C# but can store diffrerent object types
+
+const rest = new Map();
+rest.set('name', 'domi pizza');
+rest set(1, 'Krakow');
+rest.set(2, 'Rzeszow');
+
+rest
+    .set('categories', ['italian', 'pizzeria', 'vege'])
+    .set('open', 11)
+    .set('close', 23)
+    .set(true, 'We are open')
+    .set(false, 'We are closed);
+
+rest.get('name'); // 'domi pizza'
+rest.size;
+rest.has(1); // true
+rest.delete(2);
+rest.clear();
+
+Convert object to map:
+
+const hoursMap = new Map(Object.entries(openingHours));
+
+Convert map to array:
+
+console.log([...question]);
 
 -----------------------------------------------------------------------------------------
 ` + "</code></pre>";
@@ -349,3 +450,15 @@ game.printGoals('Davies', 'Mbappe', 'Robercik', 'Kimmich');
 team1 < team2 && console.log('Team 1 is more likely to win');
 
 team1 > team2 && console.log('Team 2 is more likely to win');
+
+for (const [index, value] of game.scored.entries()) {
+  console.log(`Goal ${index}: ${value}`);
+}
+
+let average = 0;
+for (const odd of Object.values(game.odds)) {
+  average += odd;
+}
+console.log(average/Object.values(game.odds).length);
+
+
