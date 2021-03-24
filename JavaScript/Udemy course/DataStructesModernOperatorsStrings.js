@@ -369,7 +369,7 @@ const charsUnique = new Set('dominik').size;
 
 // 12. Maps
 
-New ES6 data stracture. Key-value pair collection. Like dictionary in C# but can store diffrerent object types
+New ES6 data stracture. Key-value pair collection. Like dictionary in C# but can store diffrerent object types. Objects are like maps with strings as keys.
 
 const rest = new Map();
 rest.set('name', 'domi pizza');
@@ -396,6 +396,36 @@ const hoursMap = new Map(Object.entries(openingHours));
 Convert map to array:
 
 console.log([...question]);
+
+// 13. Other data structures
+
+Built-in:
+- WeakSet,
+- WeakMap
+
+Non-built-in:
+- Stacks,
+- Queues,
+- Linked lists,
+- Trees,
+- Hash tables
+
+Sets have higher performance than arrays. Analogically maps higher than objects.
+
+
+// 14. Working with strings
+
+slice == substring in c#
+indexOf(..), lastIndexOf(..), toLowerCase(), toUpperCase(), trim(), repalce(.. , ..), includes('..'), startsWith('..'), endsWith('..')
+
+const airline = 'TAP Air Portugal';
+ariline.slice(4, 7); // 'Air'
+airline.slice(-2); // 'al' - negative index starts from the end
+airline.slice(1, -1); // 'AP Air Portuga'
+
+Boxing - JS takes primitive string and wraps it into the object. Therefore string object methods works on primitive strings 
+
+In the newest JS replaceAll(.. , ..) should be introduced. The workaround is using regular expression;
 
 -----------------------------------------------------------------------------------------
 ` + "</code></pre>";
@@ -462,3 +492,10 @@ for (const odd of Object.values(game.odds)) {
 console.log(average/Object.values(game.odds).length);
 
 
+let passanger = 'door';
+passanger = passanger.toLowerCase();
+passanger = passanger[0].toUpperCase() + passanger.slice(1);
+
+const regex = new RegExp('door', 'i');
+
+console.log(passanger.replace(regex, 'x'));
