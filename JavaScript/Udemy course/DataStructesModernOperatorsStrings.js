@@ -416,7 +416,9 @@ Sets have higher performance than arrays. Analogically maps higher than objects.
 // 14. Working with strings
 
 slice == substring in c#
-indexOf(..), lastIndexOf(..), toLowerCase(), toUpperCase(), trim(), repalce(.. , ..), includes('..'), startsWith('..'), endsWith('..')
+indexOf(..), lastIndexOf(..), toLowerCase(), toUpperCase(), trim(), repalce(.. , ..), includes('..'), 
+startsWith('..'), endsWith('..'), split(..), join('..'), padStart(int, '..'), padEnd(int '..') - padding ex. +++++TEST+++++
+repeat(int)
 
 const airline = 'TAP Air Portugal';
 ariline.slice(4, 7); // 'Air'
@@ -426,6 +428,9 @@ airline.slice(1, -1); // 'AP Air Portuga'
 Boxing - JS takes primitive string and wraps it into the object. Therefore string object methods works on primitive strings 
 
 In the newest JS replaceAll(.. , ..) should be introduced. The workaround is using regular expression;
+
+
+
 
 -----------------------------------------------------------------------------------------
 ` + "</code></pre>";
@@ -499,3 +504,23 @@ passanger = passanger[0].toUpperCase() + passanger.slice(1);
 const regex = new RegExp('door', 'i');
 
 console.log(passanger.replace(regex, 'x'));
+
+document.body.append(document.createElement('textarea'));
+let btn = document.createElement('button');
+btn.style.width = '50px';
+btn.innerText = 'test';
+document.body.append(btn);
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+
+  for (const [i, row] of text.split('\n').entries()){
+
+    let [first, second] = row.toLowerCase().trim().split('_');
+    second = second.replace(second[0], second[0].toUpperCase());
+    console.log([first, second].join(''));
+  }
+});
+
+
+
