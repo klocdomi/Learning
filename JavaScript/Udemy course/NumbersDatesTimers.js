@@ -92,6 +92,68 @@ begining.setFullYear(2002);
 const diff = Date.now() - new Date(0);
 console.log(diff); 
 
+// 5. Internationalizating dates and numbers (Intl)
+
+api for providing international date and number formats
+
+const now = new Date();
+const options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+};
+
+const locale = navigator.language; // takes langauge from user browser -  en-US, en-GB, pl-PL etc.
+
+label.textContext = new Intl.DateTimeFormat('en-US', options).format(now);
+
+const num = 33843843843.23;
+
+const options = {
+    style: 'unit',
+    unit: 'mile-per-hour'
+};
+
+new Intl.NumberFormat(navigator.lanugage, options).format(num);
+
+// 6. Timers
+
+Timers:
+- time-out - executes only once after specified amount of time
+- interval - executes periodic
+
+
+setTimeout(), clearTimeout():
+
+const pizzaTimer = setTimeout(() => console.log('Here is your pizza'), 3000);
+
+if(20 > 10) clearTimeout(pizzaTimer);
+
+setInterval(), clearInterval():
+
+let time = 20;
+const timer = setInterval( function () {
+    
+    console.log(Intl.DateTimeFormat(navigator.language, {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'      
+    }).format(new Date()));
+
+    time--;
+
+    if (time === 0) {
+        clearInterval(timer);
+        console.log('logout');
+    }
+}, 1000);
+
+
+
+
+
 -----------------------------------------------------------------------------------------
 ` + "</code></pre>";
 
@@ -121,3 +183,25 @@ const diff = Date.now() - new Date(0);
 console.log(diff);
 
 console.log(new Date(diff)/ (1000 * 60 * 60 * 24 * 365)); // 51 years
+
+console.log(new Date().getSeconds());
+setTimeout(() => console.log(new Date().getSeconds()), 3000);
+
+
+
+let time = 20;
+const timer = setInterval( function () {
+    
+    console.log(Intl.DateTimeFormat('pl-PL', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'      
+    }).format(new Date()));
+
+    time--;
+
+    if (time === 0) {
+        clearInterval(timer);
+        console.log('logout');
+    }
+}, 1000);
